@@ -1,0 +1,12 @@
+
+# Editors
+/.idea/
+/.vscode/
+
+# Docker
+/docker/apache/logs/*
+!/docker/apache/logs/.gitkeep
+
+# Vendors
+/project/vendor/
+/project/composer.lock
