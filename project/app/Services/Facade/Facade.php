@@ -59,7 +59,7 @@ class Facade {
             return static::$resolvedInstance;
         }
 
-        return static::$resolvedInstance = static::$app->get($name);
+        return static::$resolvedInstance = static::$application->get($name);
     }
 
     /**

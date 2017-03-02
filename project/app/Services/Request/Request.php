@@ -45,4 +45,38 @@ class Request {
         return new Request($requestScheme, $requestHost, $requestMethod, $requestUri, $requestRemote);
     }
 
+    /**
+     * @return string
+     */
+    public function getRequestScheme() {
+        return $this->requestScheme;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestHost() {
+        return $this->requestHost;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestMethod() {
+        return $this->requestMethod;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestUri() {
+        return $this->requestUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestRemote() {
+        return $this->requestRemote;
+    }
 }
