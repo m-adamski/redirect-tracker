@@ -9,7 +9,12 @@
             "email": "m.adamski@ideacode.pl"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.0",
+        "symfony/debug": "^3.2",
+        "phroute/phroute": "^2.1",
+        "dusank/knapsack": "^8.3"
+    },
     "require-dev": {
         "raveren/kint": "^1.0"
     },
