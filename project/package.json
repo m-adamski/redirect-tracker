@@ -1,0 +1,33 @@
+{
+    "name": "redirect-tracker",
+    "version": "1.0.0",
+    "description": "Follow all redirects - get final URL",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/m-adamski/redirect-tracker.git"
+    },
+    "keywords": [
+        "redirects",
+        "tracker"
+    ],
+    "author": "Maciej Adamski <m.adamski@ideacode.pl>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/m-adamski/redirect-tracker/issues"
+    },
+    "homepage": "https://github.com/m-adamski/redirect-tracker#readme",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-cssmin": "^0.1.7",
+        "gulp-jsmin": "^0.1.5",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^3.1.0",
+        "gulp-sourcemaps": "^2.4.1",
+        "path": "^0.12.7"
+    }
+}

@@ -9,6 +9,8 @@
 
 # Vendors
 /project/vendor/
+/project/node_modules/
+/project/public/vendor/
 /project/composer.lock
 
 # Project

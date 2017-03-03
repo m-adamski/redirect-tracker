@@ -1,0 +1,25 @@
+{
+    "name": "redirect-tracker",
+    "homepage": "https://github.com/m-adamski/redirect-tracker",
+    "authors": [
+        "Maciej Adamski <m.adamski@ideacode.pl>"
+    ],
+    "description": "Follow all redirects - get final URL",
+    "main": "",
+    "keywords": [
+        "redirects",
+        "tracker"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "^4.0.0"
+    }
+}

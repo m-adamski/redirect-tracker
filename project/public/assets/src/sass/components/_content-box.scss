@@ -1,0 +1,27 @@
+.content-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 0 auto;
+    padding: 20px 40px 20px 40px;
+    text-align: left;
+
+    > .header {
+        position: relative;
+        display: block;
+        @include font-SourceSansPro(16px, 400);
+    }
+
+    > .description {
+        position: relative;
+        display: block;
+        padding-top: 5px;
+    }
+
+    > .content {
+        position: relative;
+        display: block;
+        padding-top: 10px;
+    }
+}

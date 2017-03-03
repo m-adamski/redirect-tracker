@@ -2,6 +2,8 @@
 
 namespace Core\Services\View;
 
+use Core\Services\Config\ConfigFacade;
+
 class View {
 
     protected $templatesExtension;
@@ -51,6 +53,15 @@ class View {
      * @return \Twig_Environment
      */
     private function initTwigEnvironment(\Twig_Loader_Filesystem $twigLoader, array $settings) {
-        return new \Twig_Environment($twigLoader, $settings);
+
+        // Init Twig Environment
+        $twigEnvironment = new \Twig_Environment($twigLoader, $settings);
+
+        // Extend Twig - add functions
+        $twigEnvironment->addFunction(new \Twig_Function('public', function (string $file) {
+            return ConfigFacade::get('appConfig', 'url') . '/' . $file;
+        }));
+
+        return $twigEnvironment;
     }
 }

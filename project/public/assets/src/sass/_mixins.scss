@@ -1,0 +1,63 @@
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin box-shadow($hlength, $vlength, $blur, $spread, $color, $inside: false) {
+
+    @if ($inside) {
+        -webkit-box-shadow: inset $hlength $vlength $blur $spread $color;
+        box-shadow: inset $hlength $vlength $blur $spread $color;
+    } @else {
+        -webkit-box-shadow: $hlength $vlength $blur $spread $color;
+        box-shadow: $hlength $vlength $blur $spread $color;
+    }
+}
+
+@mixin border-radius($tl, $tr, $br, $bl) {
+    -webkit-border-radius: $tl $tr $br $bl;
+    border-radius: $tl $tr $br $bl;
+}
+
+@mixin transform($args...) {
+    -moz-transform: $args;
+    -webkit-transform: $args;
+    -o-transform: $args;
+    -ms-transform: $args;
+    transform: $args;
+}
+
+@mixin margin-generator($first: 5px, $last: 40px, $step: 5px, $marginType: margin) {
+
+    $currentMargin: $first;
+    @while $currentMargin <= $last {
+
+        &-#{$currentMargin} {
+            #{$marginType}: $currentMargin;
+        }
+
+        $currentMargin: $currentMargin + $step;
+    }
+}
+
+@mixin padding-generator($first: 5px, $last: 40px, $step: 5px, $paddingType: padding) {
+
+    $currentPadding: $first;
+    @while $currentPadding <= $last {
+
+        &-#{$currentPadding} {
+            #{$paddingType}: $currentPadding;
+        }
+
+        $currentPadding: $currentPadding + $step;
+    }
+}

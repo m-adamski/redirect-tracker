@@ -1,9 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link type="text/css" rel="stylesheet" href="{{ public('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+        {% block head_styles %}{% endblock %}
+
+        <link type="text/css" rel="stylesheet" href="{{ public('assets/dist/css/app.min.css') }}">
+
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        {% block content %}{% endblock %}
+
+        <script type="text/javascript" src="{{ public('vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ public('vendor/tether/dist/js/tether.min.js') }}"></script>
+        <script type="text/javascript" src="{{ public('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+        {% block footer_scripts %}{% endblock %}
     </body>
 </html>

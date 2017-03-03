@@ -1,0 +1,6 @@
+.form {
+
+    .form-control {
+        @include font-SourceSansPro(12px, 600);
+    }
+}
