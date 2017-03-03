@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Facade;
+namespace Core\Services\Facade;
 
-use App\Helpers\Config;
+use Core\Helpers\Config;
 
 trait FacadeTraits {
 

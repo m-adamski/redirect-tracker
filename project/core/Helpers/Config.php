@@ -1,13 +1,12 @@
 <?php
+namespace Core\Helpers;
 
-namespace App\Helpers;
-
-use App\Exceptions\RuntimeException;
+use Core\Exceptions\RuntimeException;
 
 class Config {
 
     /**
-     * Return Config content
+     * Return Config content.
      *
      * @param string $file
      * @param string|null $section

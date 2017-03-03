@@ -1,5 +1,3 @@
 <?php
 
-Router::get('/', function () {
-    return 'Hello World!';
-});
+\Router::get('/', [\App\Http\Controllers\DashboardController::class, 'indexAction']);

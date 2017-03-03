@@ -10,3 +10,7 @@
 # Vendors
 /project/vendor/
 /project/composer.lock
+
+# Project
+/project/storage/cache/*
+!/project/storage/cache/.gitkeep

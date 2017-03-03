@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Services\Routing;
+namespace Core\Services\Routing;
 
-use App\Services\Request\Request;
+use Core\Services\Request\Request;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
 
 class Router {
 
-    protected $routesCollection;
+    protected $routesCollector;
     protected $routesDispatcher;
 
     /**
      * Router constructor.
      */
     public function __construct() {
-        $this->routesCollection = new RouteCollector();
-        $this->routesDispatcher = new Dispatcher($this->routesCollection->getData());
+        $this->routesCollector = new RouteCollector();
+        $this->routesDispatcher = new Dispatcher($this->routesCollector->getData());
     }
 
     /**
@@ -70,6 +70,17 @@ class Router {
     }
 
     /**
+     * Add Group.
+     *
+     * @param array $filters
+     * @param callable $func
+     */
+    public function group(array $filters, callable $func) {
+        $this->routesCollector->group($filters, $func);
+        $this->refreshDispatcher();
+    }
+
+    /**
      * Dispatch.
      *
      * @param Request $request
@@ -89,7 +100,14 @@ class Router {
     private function addRoute(string $method, string $route, $handler) {
 
         // Add Route to Collection and Refresh (ReConstruct) Dispatcher
-        $this->routesCollection->$method($route, $handler);
-        $this->routesDispatcher->__construct($this->routesCollection->getData());
+        $this->routesCollector->$method($route, $handler);
+        $this->refreshDispatcher();
+    }
+
+    /**
+     * Refresh (ReConstruct) Dispatcher
+     */
+    private function refreshDispatcher() {
+        $this->routesDispatcher->__construct($this->routesCollector->getData());
     }
 }

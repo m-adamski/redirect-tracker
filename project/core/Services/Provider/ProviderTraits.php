@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Services\Provider;
+namespace Core\Services\Provider;
 
-use App\Application;
-use App\Helpers\Config;
-use DusanKasan\Knapsack\Collection;
+use Core\Application;
+use Core\Helpers\Config;
 
 trait ProviderTraits {
 
@@ -20,26 +19,25 @@ trait ProviderTraits {
         $providersArray = Config::readConfig($configFile, 'providers');
 
         // Define Providers Collection
-        $providersCollection = new Collection([]);
+        $providersCollection = [];
 
         // Move every class and register them
         foreach ($providersArray as $providerClass) {
             if (class_exists($providerClass)) {
 
-                /* @var $currentProvider \App\Services\Provider\Provider */
+                /* @var $currentProvider \Core\Services\Provider\Provider */
                 $currentProvider = new $providerClass($application);
                 $currentProvider->register();
 
                 // Append to Providers Collection
-                $providersCollection->append($currentProvider);
+                $providersCollection[] = $currentProvider;
             }
         }
 
-        // When all Providers are registered then run boot function on each of them
-        $providersCollection->each(function ($currentProvider) {
-
-            /* @var $currentProvider \App\Services\Provider\Provider */
+        foreach ($providersCollection as $currentProvider) {
+            
+            /* @var $currentProvider \Core\Services\Provider\Provider */
             $currentProvider->boot();
-        });
+        }
     }
 }

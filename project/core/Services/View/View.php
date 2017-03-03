@@ -1,0 +1,56 @@
+<?php
+
+namespace Core\Services\View;
+
+class View {
+
+    protected $templatesExtension;
+    protected $twigLoader;
+    protected $twigEnvironment;
+
+    /**
+     * View constructor.
+     *
+     * @param string $templatesPath
+     * @param string $templatesExtension
+     * @param array $engineOptions
+     */
+    public function __construct(string $templatesPath, string $templatesExtension, array $engineOptions) {
+        $this->templatesExtension = $templatesExtension;
+
+        $this->twigLoader = $this->initTwigLoader($templatesPath);
+        $this->twigEnvironment = $this->initTwigEnvironment($this->twigLoader, $engineOptions);
+    }
+
+    /**
+     * Render template.
+     *
+     * @param string $templateFile
+     * @param array $data
+     * @return string
+     */
+    public function make(string $templateFile, array $data) {
+        return $this->twigEnvironment->render($templateFile . $this->templatesExtension, $data);
+    }
+
+    /**
+     * Init Twig Loader.
+     *
+     * @param string $templatesPath
+     * @return \Twig_Loader_Filesystem
+     */
+    private function initTwigLoader(string $templatesPath) {
+        return new \Twig_Loader_Filesystem($templatesPath);
+    }
+
+    /**
+     * Init Twig Environment.
+     *
+     * @param \Twig_Loader_Filesystem $twigLoader
+     * @param array $settings
+     * @return \Twig_Environment
+     */
+    private function initTwigEnvironment(\Twig_Loader_Filesystem $twigLoader, array $settings) {
+        return new \Twig_Environment($twigLoader, $settings);
+    }
+}

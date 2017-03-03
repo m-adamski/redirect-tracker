@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Routing;
+namespace Core\Services\Routing;
 
-use App\Services\Facade\Facade;
+use Core\Services\Facade\Facade;
 
 class RouterFacade extends Facade {
 

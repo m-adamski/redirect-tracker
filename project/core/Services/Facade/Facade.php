@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Facade;
+namespace Core\Services\Facade;
 
-use App\Exceptions\RuntimeException;
-use App\Application;
+use Core\Exceptions\RuntimeException;
+use Core\Application;
 
-class Facade {
+abstract class Facade {
 
     /**
      * @var Application
@@ -23,7 +23,7 @@ class Facade {
      * @param Application $application
      */
     public static function init(Application $application) {
-        self::$application = $application;
+        static::$application = $application;
     }
 
     /**
@@ -53,10 +53,6 @@ class Facade {
     protected static function resolveFacadeInstance($name) {
         if (is_object($name)) {
             return $name;
-        }
-
-        if (isset(static::$resolvedInstance)) {
-            return static::$resolvedInstance;
         }
 
         return static::$resolvedInstance = static::$application->get($name);

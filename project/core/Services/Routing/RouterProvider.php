@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Routing;
+namespace Core\Services\Routing;
 
-use App\Services\Provider\Provider;
+use Core\Services\Provider\Provider;
 
 class RouterProvider extends Provider {
 

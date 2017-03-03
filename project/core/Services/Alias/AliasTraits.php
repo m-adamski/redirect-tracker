@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Alias;
+namespace Core\Services\Alias;
 
-use App\Helpers\Config;
+use Core\Helpers\Config;
 
 trait AliasTraits {
 
@@ -19,8 +19,7 @@ trait AliasTraits {
         // Move every class and init them
         foreach ($aliasesArray as $aliasName => $aliasClass) {
             if (class_exists($aliasClass)) {
-                class_alias($aliasClass, '\\' . $aliasName);
-                class_alias($aliasClass, '\App\\' . $aliasName);
+                class_alias($aliasClass, $aliasName);
             }
         }
     }

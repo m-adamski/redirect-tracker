@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Provider;
+namespace Core\Services\Provider;
 
-use App\Application;
+use Core\Application;
 
 abstract class Provider {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Request;
+namespace Core\Services\Request;
 
 class Request {
 

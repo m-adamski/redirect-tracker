@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Routing;
+namespace Core\Services\Routing;
 
-use App\Exceptions\RuntimeException;
+use Core\Exceptions\RuntimeException;
 
 trait RouterTraits {
 
