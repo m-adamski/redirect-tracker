@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use Core\Http\Controllers\Controller;
-use Core\Services\Request\Request;
 use Core\Services\Validator\ValidatorFacade;
 use Core\Services\View\ViewFacade;
+use Symfony\Component\HttpFoundation\Request;
 use GuzzleHttp\Client;
 
 class DashboardController extends Controller {
 
     /**
-     * Index.
-     * GET /
+     * GET / - Index.
      *
+     * @param Request $request
      * @return mixed
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         return ViewFacade::make('index.html', []);
     }
 
+    public function testAction() {
+
+    }
+
     /**
-     * Process set Url.
-     * POST /
+     * POST / - Process set Url.
      *
      * @param Request $request
      */

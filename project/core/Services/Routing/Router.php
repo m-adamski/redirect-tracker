@@ -3,7 +3,7 @@
 namespace Core\Services\Routing;
 
 use Core\Exceptions\RouterException;
-use Core\Services\Request\Request;
+use Symfony\Component\HttpFoundation\Request;
 use DusanKasan\Knapsack\Collection;
 
 class Router {
@@ -79,7 +79,7 @@ class Router {
     public function dispatch(Request $request) {
 
         // Try to match current Request with one of defined route
-        $routerMatch = $this->routesCollector->match($request->getRequestUri(), $request->getRequestMethod());
+        $routerMatch = $this->routesCollector->match($request->getRequestUri(), $request->getMethod());
 
         // Check if Routes Dispatcher found correct route
         if (is_array($routerMatch) && isset($routerMatch['target']) && count($routerMatch['target']) > 0) {

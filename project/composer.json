@@ -16,7 +16,8 @@
         "dusank/knapsack": "^8.3",
         "twig/twig": "^2.2",
         "vlucas/valitron": "^1.4",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "symfony/http-foundation": "^3.2"
     },
     "require-dev": {
         "raveren/kint": "^1.0"

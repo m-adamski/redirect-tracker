@@ -2,7 +2,7 @@
 
 namespace Core\Services\Validator;
 
-use Core\Services\Request\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Valitron\Validator as ValitronValidator;
 
 class Validator {
@@ -36,7 +36,7 @@ class Validator {
      * @return ValidatorResult
      */
     public function validate(Request $request, array $rules) {
-        return $this->make($request->all(), $rules);
+        return $this->make($request->request->all(), $rules);
     }
 
     /**

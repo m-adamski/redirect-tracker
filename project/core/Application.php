@@ -6,9 +6,9 @@ use Core\Exceptions\RuntimeException;
 use Core\Services\Alias\AliasTraits;
 use Core\Services\Facade\FacadeTraits;
 use Core\Services\Provider\ProviderTraits;
-use Core\Services\Request\Request;
 use Core\Services\Routing\RouterFacade;
 use Core\Services\Routing\RouterTraits;
+use Symfony\Component\HttpFoundation\Request;
 use DusanKasan\Knapsack\Collection;
 
 class Application {
