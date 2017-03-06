@@ -38,13 +38,29 @@ body {
     display: block;
     padding-top: 5px; }
   .content-box > .content {
-    position: relative;
-    display: block;
     padding-top: 10px; }
 
 .form .form-control {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 12px;
   font-weight: 600; }
+  .form .form-control::-webkit-input-placeholder {
+    color: #C9C9C9; }
+  .form .form-control::-moz-placeholder {
+    color: #C9C9C9; }
+  .form .form-control:-ms-input-placeholder {
+    color: #C9C9C9; }
+  .form .form-control:-moz-placeholder {
+    color: #C9C9C9; }
+
+.form .btn {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #1695A3;
+  border-color: #1695A3;
+  cursor: pointer; }
+  .form .btn:hover {
+    background-color: #106c76; }
 
 /*# sourceMappingURL=app.css.map */

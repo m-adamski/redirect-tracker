@@ -2,21 +2,21 @@
 
 namespace Core\Services\Routing;
 
+use Core\Exceptions\RouterException;
 use Core\Services\Request\Request;
-use Phroute\Phroute\Dispatcher;
-use Phroute\Phroute\RouteCollector;
+use DusanKasan\Knapsack\Collection;
 
 class Router {
 
     protected $routesCollector;
-    protected $routesDispatcher;
+    protected $controllersCollection;
 
     /**
      * Router constructor.
      */
     public function __construct() {
-        $this->routesCollector = new RouteCollector();
-        $this->routesDispatcher = new Dispatcher($this->routesCollector->getData());
+        $this->routesCollector = new \AltoRouter();
+        $this->controllersCollection = new Collection([]);
     }
 
     /**
@@ -70,24 +70,41 @@ class Router {
     }
 
     /**
-     * Add Group.
-     *
-     * @param array $filters
-     * @param callable $func
-     */
-    public function group(array $filters, callable $func) {
-        $this->routesCollector->group($filters, $func);
-        $this->refreshDispatcher();
-    }
-
-    /**
      * Dispatch.
      *
      * @param Request $request
-     * @return mixed|null
+     * @return mixed
+     * @throws RouterException
      */
     public function dispatch(Request $request) {
-        return $this->routesDispatcher->dispatch($request->getRequestMethod(), $request->getRequestUri());
+
+        // Try to match current Request with one of defined route
+        $routerMatch = $this->routesCollector->match($request->getRequestUri(), $request->getRequestMethod());
+
+        // Check if Routes Dispatcher found correct route
+        if (is_array($routerMatch) && isset($routerMatch['target']) && count($routerMatch['target']) > 0) {
+
+            $routeController = (isset($routerMatch['target'][0])) ? $routerMatch['target'][0] : null;
+            $routeControllerMethod = (isset($routerMatch['target'][1])) ? $routerMatch['target'][1] : null;
+
+            if (class_exists($routeController)) {
+
+                // If Controller is not yet created then create new and append it to controllers collection
+                if (!$this->controllersCollection->has($routeController)) {
+                    $this->controllersCollection = $this->controllersCollection->append(new $routeController(), $routeController);
+                }
+
+                if (method_exists($this->controllersCollection->get($routeController), $routeControllerMethod)) {
+                    return $this->controllersCollection->get($routeController)->$routeControllerMethod($request, $routerMatch['params']);
+                }
+            }
+
+            throw new RouterException('Wrong controller or method');
+        } else {
+            // 404
+            sd('404');
+        }
+
     }
 
     /**
@@ -100,14 +117,6 @@ class Router {
     private function addRoute(string $method, string $route, $handler) {
 
         // Add Route to Collection and Refresh (ReConstruct) Dispatcher
-        $this->routesCollector->$method($route, $handler);
-        $this->refreshDispatcher();
-    }
-
-    /**
-     * Refresh (ReConstruct) Dispatcher
-     */
-    private function refreshDispatcher() {
-        $this->routesDispatcher->__construct($this->routesCollector->getData());
+        $this->routesCollector->map($method, $route, $handler);
     }
 }

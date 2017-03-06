@@ -36,6 +36,24 @@
     transform: $args;
 }
 
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+}
+
 @mixin margin-generator($first: 5px, $last: 40px, $step: 5px, $marginType: margin) {
 
     $currentMargin: $first;

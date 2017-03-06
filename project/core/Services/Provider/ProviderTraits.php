@@ -35,7 +35,7 @@ trait ProviderTraits {
         }
 
         foreach ($providersCollection as $currentProvider) {
-            
+
             /* @var $currentProvider \Core\Services\Provider\Provider */
             $currentProvider->boot();
         }

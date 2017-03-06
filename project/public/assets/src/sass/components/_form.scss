@@ -2,5 +2,19 @@
 
     .form-control {
         @include font-SourceSansPro(12px, 600);
+        @include placeholder {
+            color: $color_silver;
+        }
+    }
+
+    .btn {
+        @include font-SourceSansPro(12px, 600);
+        background-color: $color_eastern-blue;
+        border-color: $color_eastern-blue;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($color_eastern-blue, 10%);
+        }
     }
 }

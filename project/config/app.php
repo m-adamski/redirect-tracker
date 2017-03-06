@@ -27,6 +27,7 @@ return [
         \Core\Services\Debugger\DebuggerProvider::class,
         \Core\Services\Routing\RouterProvider::class,
         \Core\Services\View\ViewProvider::class,
+        \Core\Services\Validator\ValidatorProvider::class,
     ],
 
 
@@ -38,6 +39,7 @@ return [
         \Core\Services\Debugger\DebuggerFacade::class,
         \Core\Services\Routing\RouterFacade::class,
         \Core\Services\View\ViewFacade::class,
+        \Core\Services\Validator\ValidatorFacade::class,
     ],
 
 
@@ -45,9 +47,10 @@ return [
     // Application Aliases
     // --------------------------------------------------------------------------
     'aliases'   => [
-        'Config'   => \Core\Services\Config\ConfigFacade::class,
-        'Debugger' => \Core\Services\Debugger\DebuggerFacade::class,
-        'Router'   => \Core\Services\Routing\RouterFacade::class,
-        'View'     => \Core\Services\View\ViewFacade::class,
+        'Config'    => \Core\Services\Config\ConfigFacade::class,
+        'Debugger'  => \Core\Services\Debugger\DebuggerFacade::class,
+        'Router'    => \Core\Services\Routing\RouterFacade::class,
+        'View'      => \Core\Services\View\ViewFacade::class,
+        'Validator' => \Core\Services\Validator\ValidatorFacade::class,
     ]
 ];

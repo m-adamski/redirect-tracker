@@ -12,9 +12,11 @@
     "require": {
         "php": ">=7.0",
         "symfony/debug": "^3.2",
-        "phroute/phroute": "^2.1",
+        "altorouter/altorouter": "^1.2.0",
         "dusank/knapsack": "^8.3",
-        "twig/twig": "^2.2"
+        "twig/twig": "^2.2",
+        "vlucas/valitron": "^1.4",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "raveren/kint": "^1.0"
