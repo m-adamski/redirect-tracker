@@ -8,6 +8,7 @@ use Core\Services\Facade\FacadeTraits;
 use Core\Services\Provider\ProviderTraits;
 use Core\Services\Routing\RouterFacade;
 use Core\Services\Routing\RouterTraits;
+use Core\Services\Session\SessionFacade;
 use Symfony\Component\HttpFoundation\Request;
 use DusanKasan\Knapsack\Collection;
 
@@ -102,6 +103,11 @@ class Application {
      * @param Request $request
      */
     public function handle(Request $request) {
+
+        // Assign Session into Request
+        $request->setSession(SessionFacade::getSession());
+
+        // Display Response
         echo RouterFacade::dispatch($request);
     }
 }

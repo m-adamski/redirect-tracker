@@ -63,4 +63,13 @@ body {
   .form .btn:hover {
     background-color: #106c76; }
 
+.form label.error {
+  position: relative;
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 0 0 3px;
+  color: #F3564F; }
+
 /*# sourceMappingURL=app.css.map */

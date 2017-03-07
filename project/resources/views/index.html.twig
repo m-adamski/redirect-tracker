@@ -8,16 +8,24 @@
         <section class="wrapper">
 
             <section class="content-box">
+
+                {% if validationError %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Error!</strong> The URL is incorrect. Please enter a valid address.
+                    </div>
+                {% endif %}
+
                 <section class="header">Redirect Tracker</section>
                 <section class="description">
                     <p>Please paste the URL you want to check.</p>
                 </section>
                 <section class="content">
 
-                    <form class="form" action="/" method="POST">
+                    <form class="form" id="mainForm" action="/" method="POST">
                         <section class="row">
                             <section class="col-sm-12 col-md-8">
-                                <input type="text" name="inputUrl" id="inputUrl" class="form-control" placeholder="https://google.com">
+                                <input type="url" name="inputUrl" id="inputUrl" class="form-control"
+                                       placeholder="https://google.com">
                             </section>
                             <section class="col-sm-12 col-md-4">
                                 <button type="submit" class="btn btn-primary btn-block">Check!</button>
@@ -26,9 +34,37 @@
                     </form>
 
                 </section>
+                <section class="content">
+
+                    <ol>
+                        {% for redirect in redirectResult %}
+                            <li><strong>{{ redirect.code }}</strong> - {{ redirect.redirect }}</li>
+                        {% endfor %}
+                    </ol>
+
+                </section>
             </section>
 
         </section>
     </section>
+
+{% endblock %}
+
+{% block footer_scripts %}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#mainForm").validate({
+                rules: {
+                    inputUrl: {
+                        required: true,
+                        url: true
+                    }
+                }
+            });
+
+        });
+    </script>
 
 {% endblock %}

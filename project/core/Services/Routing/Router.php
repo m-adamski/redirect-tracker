@@ -2,6 +2,7 @@
 
 namespace Core\Services\Routing;
 
+use Core\Exceptions\RouteNotFoundException;
 use Core\Exceptions\RouterException;
 use Symfony\Component\HttpFoundation\Request;
 use DusanKasan\Knapsack\Collection;
@@ -74,6 +75,7 @@ class Router {
      *
      * @param Request $request
      * @return mixed
+     * @throws RouteNotFoundException
      * @throws RouterException
      */
     public function dispatch(Request $request) {
@@ -99,10 +101,9 @@ class Router {
                 }
             }
 
-            throw new RouterException('Wrong controller or method');
+            throw new RouterException('Wrong controller or method.');
         } else {
-            // 404
-            sd('404');
+            throw new RouteNotFoundException('Route does not found.');
         }
 
     }

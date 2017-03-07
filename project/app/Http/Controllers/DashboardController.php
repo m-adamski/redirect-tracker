@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Core\Http\Controllers\Controller;
+use Core\Services\Redirect\RedirectFacade;
+use Core\Services\Session\SessionFacade;
 use Core\Services\Validator\ValidatorFacade;
 use Core\Services\View\ViewFacade;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,11 +19,21 @@ class DashboardController extends Controller {
      * @return mixed
      */
     public function indexAction(Request $request) {
-        return ViewFacade::make('index.html', []);
-    }
 
-    public function testAction() {
+        // Define response data
+        $responseData = [];
 
+        // Check for Validation Errors
+        if (SessionFacade::hasFlash('validationError')) {
+            $responseData['validationError'] = SessionFacade::getFlash('validationError');
+        }
+
+        // Check for Redirect Result
+        if (SessionFacade::hasFlash('redirectResult')) {
+            $responseData['redirectResult'] = SessionFacade::getFlash('redirectResult');
+        }
+
+        return ViewFacade::make('index.html', $responseData);
     }
 
     /**
@@ -42,13 +54,15 @@ class DashboardController extends Controller {
             // Check request Url
             $resultArray = $this->checkUrl($request->get('inputUrl'));
 
-            sd($resultArray);
+            // Add result into Flash Session & Redirect to Home
+            SessionFacade::addFlash('redirectResult', [$resultArray], false);
+            RedirectFacade::redirect('/');
 
         } else {
 
-            // TODO: Redirect to index with data
-
-            sd($validationResult->errors());
+            // Add Validation errors into Flash Session & Redirect to Home
+            SessionFacade::addFlash('validationError', $validationResult->errors(), false);
+            RedirectFacade::redirect('/');
         }
     }
 

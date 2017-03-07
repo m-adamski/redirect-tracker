@@ -2,9 +2,16 @@
 
 namespace Core\Services\Redirect;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 class Redirect {
 
-    public function to(string $redirectUrl) {
-
+    /**
+     * Redirect to specified Uri.
+     *
+     * @param string $redirectUri
+     */
+    public function redirect(string $redirectUri) {
+        RedirectResponse::create($redirectUri)->send();
     }
 }

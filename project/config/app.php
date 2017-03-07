@@ -28,6 +28,7 @@ return [
         \Core\Services\Routing\RouterProvider::class,
         \Core\Services\View\ViewProvider::class,
         \Core\Services\Validator\ValidatorProvider::class,
+        \Core\Services\Session\SessionProvider::class,
         \Core\Services\Redirect\RedirectProvider::class,
     ],
 
@@ -41,6 +42,7 @@ return [
         \Core\Services\Routing\RouterFacade::class,
         \Core\Services\View\ViewFacade::class,
         \Core\Services\Validator\ValidatorFacade::class,
+        \Core\Services\Session\SessionFacade::class,
         \Core\Services\Redirect\RedirectFacade::class,
     ],
 
@@ -54,6 +56,7 @@ return [
         'Router'    => \Core\Services\Routing\RouterFacade::class,
         'View'      => \Core\Services\View\ViewFacade::class,
         'Validator' => \Core\Services\Validator\ValidatorFacade::class,
+        'Session'   => \Core\Services\Session\SessionFacade::class,
         'Redirect'  => \Core\Services\Redirect\RedirectFacade::class,
     ]
 ];

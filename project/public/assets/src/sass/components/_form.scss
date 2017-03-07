@@ -17,4 +17,12 @@
             background-color: darken($color_eastern-blue, 10%);
         }
     }
+
+    label.error {
+        position: relative;
+        display: block;
+        @include font-SourceSansPro(12px, 600);
+        padding: 5px 0 0 3px;
+        color: $color_carnation;
+    }
 }
