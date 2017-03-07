@@ -76,7 +76,8 @@ class DashboardController extends Controller {
 
         // Create new Guzzle Client
         $httpClient = new Client([
-            'allow_redirects' => false
+            'allow_redirects' => false,
+            'verify'          => false
         ]);
 
         // Define Result Array
