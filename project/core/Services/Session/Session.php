@@ -28,7 +28,6 @@ class Session {
         if (!$this->sessionContainer->has($key)) {
             $this->sessionContainer->set($key, $value);
         } else {
-            sd($this->sessionContainer->all());
             throw new RuntimeException('Item already exist in Session.');
         }
     }

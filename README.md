@@ -44,6 +44,3 @@ $ gulp
   or
 $ gulp sass-watch
 ```
-
-### TODO
-In the near future I plan to separate the project and move the core to the external repository.

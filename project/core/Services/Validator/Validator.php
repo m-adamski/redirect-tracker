@@ -108,7 +108,7 @@ class Validator {
             } else {
 
                 // Add to Rules Array
-                $rulesArray[$userField][] = $userRule;
+                $rulesArray[$userField][$userRule] = null;
             }
         }
 
